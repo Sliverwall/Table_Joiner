@@ -1,7 +1,7 @@
 
 #-------------General Functions------------
 ###Display database
-DT_shorthand <- function(df, pl = 10){
+dt_Shorthand <- function(df, pl = 10){
   datatable(
     df,
     options = list(

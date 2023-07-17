@@ -26,7 +26,35 @@ server <- function(input, output, session) {
   #Display CSV Data as table
   
   output$csv1 <- DT::renderDataTable({
-    DT_shorthand(table_1(), 10)
+    dt_Shorthand(table_1(), 10)
+  })
+  output$csv2 <- DT::renderDataTable({
+    dt_Shorthand(table_2(), 10)
+  })
+  
+  
+  merged_table <- reactive ({
+    # check if both tables are imported
+    
+    if(is.null(table_1()) | is.null(table_2())){
+      return(NULL)
+    } else {
+        
+      merged_df <- merge(table_1(), table_2(), 
+                         by = "Name",
+                         all = TRUE)
+      
+      merged_df
+      
+      }
+  })
+  
+  output$merged_csv <- DT::renderDataTable({
+    if(is.null(merged_table())){
+      return(NULL)
+    } else {
+      DT_shorthand(merged_table(), 10)
+    }
   })
   
 }

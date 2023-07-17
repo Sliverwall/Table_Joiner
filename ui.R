@@ -15,8 +15,10 @@ ui <- dashboardPage(
     tabItems(
       ### Tab Item 1 ---------
       tabItem("tab1", fluidPage(
-        fileInput("file", "Import CSV file"),
-        DT::dataTableOutput("csv1")
+        fileInput("table_1", "Import CSV file"),
+        DT::dataTableOutput("csv1"),
+        fileInput("table_2", "Import CSV file"),
+        DT::dataTableOutput("csv2")
       )
       ),
       tabItem("tab1_sub1", 
@@ -29,6 +31,7 @@ ui <- dashboardPage(
 
                 ),
                 mainPanel(
+                  DT::dataTableOutput("merged_csv")
 
               )
       )
