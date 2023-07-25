@@ -15,10 +15,12 @@ ui <- dashboardPage(
     tabItems(
       ### Tab Item 1 ---------
       tabItem("tab1", fluidPage(
+        textInput('by_Var', "By which attribute:",
+                  c("")),
         fileInput("table_1", "Import CSV file"),
-        DT::dataTableOutput("csv1"),
+       div_Scroll( DT::dataTableOutput("csv1")),
         fileInput("table_2", "Import CSV file"),
-        DT::dataTableOutput("csv2")
+        div_Scroll(DT::dataTableOutput("csv2")),
       )
       ),
       tabItem("tab1_sub1", 
@@ -27,11 +29,8 @@ ui <- dashboardPage(
                   title ="Table Joiner",
                   windowTitle = "Table Joiner"
                 ),
-                sidebarPanel(
-
-                ),
                 mainPanel(
-                  DT::dataTableOutput("merged_csv")
+                  div_Scroll(DT::dataTableOutput("merged_csv"))
 
               )
       )

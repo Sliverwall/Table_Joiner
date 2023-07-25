@@ -19,3 +19,11 @@ dt_Shorthand <- function(df, pl = 10){
   )
 }
 
+div_Scroll <- function(object_var){
+  
+  ### Wrap object in div overflow tag
+   result <- div(style = "overflow-x: scroll;", object_var)
+   
+   return(result)
+}
+
